@@ -48,7 +48,7 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  
+
   weatherText: {
     fontWeight: 'bold',
     color: 'red',
@@ -58,7 +58,7 @@ const useStyles = makeStyles(() => ({
   errorText: {
     color: 'red',
   },
-  
+
 }));
 
 
@@ -97,6 +97,9 @@ const DetailCard: React.FC<IPROPS> = ({ detail }) => {
       }));
     }
   }
+
+  const celsius = Math.round((Number(state.weather) - 273.15) * 100) / 100;
+
   return (
     <div className={classes.cardContainer}>
       <Card className={classes.detailCardStyle}>
@@ -118,7 +121,7 @@ const DetailCard: React.FC<IPROPS> = ({ detail }) => {
           )}
           {state.showWeather && !state.error && (
             <Typography className={classes.weatherText}>
-              Weather: {state.weather}
+              Weather: {celsius} C
             </Typography>
           )}
           {state.error && (
